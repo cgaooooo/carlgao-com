@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Resume | Carl Gao (高世钦)</title>
+<meta name="description" content="Resume of Carl Gao (高世钦): builder and founder working across frontend, design, and video.">
+<meta name="theme-color" content="#0a0a09">
+<link rel="canonical" href="https://carlgao.com/resume.html">
+<!-- Privacy-friendly analytics by Plausible -->
+<script async src="https://plausible.io/js/pa-xkqabRID9ToTgE5XRVZLa.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a09'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23ffb347' text-anchor='middle'%3Ecg%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&text=%E9%AB%98%E4%B8%96%E9%92%A6&display=swap" rel="stylesheet">
+<style>
+/* Same system as the desktop: JetBrains Mono for labels and dates, Inter for reading (fixed here, not the
+   system font, so the printed PDF looks the same on every machine). Spacing steps: 4 / 8 / 12 / 16 / 24 / 32 / 48. */
+:root{
+  --desk:#0a0a09;
+  --paper:#fbfaf7;
+  --ink:#1b1a17;
+  --muted:#66625b;
+  --rule:#e4e0d6;
+  --label:#8a5100;           /* the site's amber, darkened to 6:1 on paper */
+  --amber:#ffb347;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --cjk:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Noto Sans CJK SC','Microsoft YaHei',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--desk);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+body{background:var(--desk);color:var(--ink);font:400 13.5px/1.5 var(--sans);padding:0 16px 48px}
+a{color:inherit;text-decoration:none}
+[lang="zh-Hans"]{font-family:var(--cjk)}
+
+/* toolbar above the sheet (screen only) */
+.bar{max-width:816px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;font:12px var(--mono);color:#a39d90}
+.bar a:hover,.bar a:focus-visible{color:var(--amber);outline:none}
+.save{font:inherit;color:var(--desk);background:var(--amber);border:0;border-radius:6px;padding:6px 12px;cursor:pointer}
+.save:hover,.save:focus-visible{background:#ffc46e;outline:2px solid #fff3dd;outline-offset:2px}
+
+/* the sheet: US letter proportions on screen, the whole page in print */
+.sheet{max-width:816px;margin:0 auto;background:var(--paper);border-radius:4px;padding:48px 56px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
+h1{font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-.02em}
+h1 [lang]{font-size:20px;font-weight:500;color:var(--muted);margin-left:8px;letter-spacing:0}
+.role{margin-top:8px;color:var(--muted)}
+.contact{list-style:none;text-align:right;font:11.5px/24px var(--mono);color:var(--muted)}   /* 24px rows: each link is a comfortable tap target */
+.contact a{color:var(--ink);display:inline-block;min-height:24px}
+.contact a:hover{text-decoration:underline}
+
+section{display:grid;grid-template-columns:112px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule)}
+section:last-child{border-bottom:0;padding-bottom:0}
+h2{font:500 10.5px/1.9 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--label)}
+.entry + .entry{margin-top:12px}
+.entry header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+h3{font-size:14px;font-weight:600}
+.what{color:var(--muted)}
+time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowrap}
+.entry ul{margin:4px 0 0 16px}
+.entry li{margin-top:2px}
+.entry li::marker{color:var(--muted)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+.kv dt{font:11px/1.9 var(--mono);color:var(--muted)}
+
+@media(max-width:640px){
+  body{padding:0 0 32px}
+  .bar{padding:12px 16px}
+  .sheet{border-radius:0;padding:24px 20px}
+  .head{flex-direction:column;align-items:flex-start;gap:12px}
+  .contact{text-align:left}
+  section{grid-template-columns:1fr;gap:8px}
+  time{margin-left:0;width:100%}
+}
+
+@page{size:letter;margin:.5in .55in}
+@media print{
+  html,body{background:#fff}
+  body{padding:0;font-size:12.5px}
+  .bar{display:none}
+  .sheet{max-width:none;padding:0;border-radius:0;box-shadow:none;background:#fff}
+  a{color:inherit}
+}
+</style>
+</head>
+<body>
+
+<nav class="bar" aria-label="Resume actions">
+  <a href="/">&larr; carlgao.com</a>
+  <button type="button" class="save" id="save">Save as PDF</button>
+</nav>
+
+<main class="sheet">
+  <header class="head">
+    <div>
+      <h1>Carl Gao <span lang="zh-Hans">高世钦</span></h1>
+      <p class="role">Builder and founder. Frontend, design, and video.</p>
+    </div>
+    <ul class="contact">
+      <li><a href="mailto:iamcarlgao@gmail.com">iamcarlgao@gmail.com</a></li>
+      <li><a href="https://carlgao.com">carlgao.com</a></li>
+      <li><a href="https://github.com/carlgaopapi-png">github.com/carlgaopapi-png</a></li>
+      <li><a href="https://www.linkedin.com/in/carlgaoo">linkedin.com/in/carlgaoo</a></li>
+      <li>Massachusetts</li>
+    </ul>
+  </header>
+
+  <section>
+    <h2>Projects</h2>
+    <div>
+      <div class="entry">
+        <header><h3>carlgao.com</h3><span class="what">design + code</span><time>2026</time></header>
+        <ul>
+          <li>Personal site built as an interactive desktop: windows, a dock, a terminal, and a real-time 3D ASCII rendering of my name.</li>
+          <li>Plain HTML, CSS, and JavaScript with no framework or build step. Every folder and project has a shareable link, and it respects reduced motion.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <header><h3>tai</h3><span class="what">founder, design + build</span><time>2026, building</time></header>
+        <ul>
+          <li>A consumer app that helps people stop wasting time on their phone.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <header><h3>VaultBix</h3><span class="what">co-founder</span><time>2026</time></header>
+        <ul>
+          <li>Developer-security startup that stopped API keys, passwords, and secrets from leaking into AI tools.</li>
+          <li>Shipped a CLI on npm that wraps Claude Code to catch secrets in real time, and an open-source Chrome extension with 33 detection patterns that runs 100% locally.</li>
+          <li>Built with Next.js, Tailwind, shadcn/ui, Node, Chrome MV3, and Vercel.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <header><h3>YouTube</h3><span class="what">creator</span><time>2026</time></header>
+        <ul>
+          <li>Started a channel. First episode out October 2026, shot on GoPro and iPhone, edited in DaVinci Resolve. Next up: vlogs on building tai in public.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="entry">
+      <header><h3>UC Berkeley Pre-College Scholars, CS Academy</h3><time>summer 2026</time></header>
+      <ul>
+        <li>Seven weeks on campus. Beauty and Joy of Computing in Snap!: higher-order functions, Markov chain text generators, a 2048 clone, and recursive drawings.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Recognition</h2>
+    <div>
+      <div class="entry">
+        <header><h3>Hong Kong national ice hockey team</h3></header>
+        <ul><li>Also played at a hockey academy.</li></ul>
+      </div>
+      <div class="entry">
+        <header><h3>Art awards</h3></header>
+        <ul>
+          <li>Scholastic award.</li>
+          <li>2nd in the state for a fish award.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <dl class="kv">
+      <dt>code</dt><dd>TypeScript, React, Next.js, Tailwind, Node, Python, HTML, CSS, Canvas</dd>
+      <dt>video</dt><dd>DaVinci Resolve, GoPro, iPhone</dd>
+      <dt>into</dt><dd>Design, augmented reality, TouchDesigner, art, hockey</dd>
+    </dl>
+  </section>
+</main>
+
+<script>
+  document.getElementById("save").addEventListener("click", function(){ window.print(); });
+</script>
+</body>
+</html>

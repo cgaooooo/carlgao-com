@@ -60,7 +60,7 @@
 :root{
   --bg:#0a0a09;
   --fg:#ece7da;
-  --dim:#7a7468;
+  --dim:#807a6e;
   --line:#2f2c27;
   --amber:#ffb347;
   --amber-soft:rgba(255,179,71,.12);
@@ -132,8 +132,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
   background:rgba(22,22,22,.55);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);
   border-bottom:1px solid rgba(255,255,255,.06);font-size:13px;color:#ececec;user-select:none}
 .mb-l,.mb-r{display:flex;align-items:center;gap:1px;min-width:0}
-.menubar button,.mb-brand{padding:2px 9px;border-radius:5px;white-space:nowrap}
-.menubar button:hover,.menubar button:focus-visible{background:rgba(255,255,255,.14);outline:none}
+.menubar button,.mb-menu a,.mb-brand{padding:2px 9px;border-radius:5px;white-space:nowrap}
+.menubar button:hover,.menubar button:focus-visible,.mb-menu a:hover,.mb-menu a:focus-visible{background:rgba(255,255,255,.14);outline:none}
 .mb-brand{font-weight:700;display:flex;align-items:center;gap:7px}
 .mb-logo{font-family:var(--mono);font-weight:800;color:var(--amber);font-size:12px}
 .mb-clock{padding:2px 6px;font-variant-numeric:tabular-nums}
@@ -226,8 +226,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
 .links a,.btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;padding:6px 12px;border-radius:7px;background:rgba(255,255,255,.08);transition:background .15s}
 .links a:hover,.btn:hover{background:rgba(255,255,255,.15)}
-.links a.primary{background:var(--sel)}
-.links a.primary:hover{background:#4a8ff8}
+.links a.primary{background:#1d63d1;color:#fff}       /* a deeper --sel so white text clears 4.5:1 */
+.links a.primary:hover{background:#2a6fe0}
 .kv{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin-top:16px;font-size:13px}
 .kv dt{color:var(--win-dim)}
 .art{font-family:var(--mono);font-size:11.5px;line-height:1.35;color:#b8b2a4;white-space:pre;overflow-x:auto;background:rgba(0,0,0,.35);border:1px solid var(--hair);
@@ -235,6 +235,24 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .art b{color:var(--amber);font-weight:500}
 .split{display:grid;gap:8px 28px}
 @media(min-width:900px){.split{grid-template-columns:1.15fr 1fr;align-items:start}.split .art{margin-top:12px}}
+
+/* case study: mono section labels, type specimens, swatches, before/after figures */
+.doc h3{font:500 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:28px 0 4px}
+.doc code{font:12.5px var(--mono);color:#ece7da;background:rgba(255,255,255,.07);padding:1px 5px;border-radius:4px}
+.doc ul{margin:10px 0 0 18px;color:#d4d4da;max-width:62ch}
+.doc li{margin:5px 0}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;max-width:62ch}
+.spec div{padding:12px 14px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--hair)}
+.spec b{display:block;font-size:30px;line-height:1.1;font-weight:500;color:#fff}
+.spec .m b{font-family:var(--mono)}
+.spec span{display:block;font:11px/1.5 var(--mono);color:var(--win-dim);margin-top:6px}
+.swatches{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.swatches span{display:inline-flex;align-items:center;gap:7px;font:11px var(--mono);color:#cfcfd6;padding:4px 9px 4px 5px;border-radius:6px;background:rgba(255,255,255,.05)}
+.swatches i{width:14px;height:14px;border-radius:3px;border:1px solid rgba(255,255,255,.18)}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;max-width:62ch}
+.ba figure{margin:0}
+.ba img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--hair);background:var(--bg)}
+.ba figcaption{font:11px/1.5 var(--mono);color:var(--win-dim);margin-top:6px}
 
 /* youtube player */
 .player{background:#000;aspect-ratio:16/9;position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
@@ -333,6 +351,12 @@ html:not(.js) .proj[hidden]{display:block!important}
     <path d="M17 19l9 8-9 8" stroke="#ffb347" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M30 37h16" stroke="#ffb347" stroke-width="3.2" stroke-linecap="round"/>
   </symbol>
+  <symbol id="i-resume" viewBox="0 0 64 56">
+    <path d="M17 3h22l11 11v38a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="#f4f4f2"/>
+    <path d="M39 3v9a2 2 0 0 0 2 2h9z" fill="#d5d5d2"/>
+    <rect x="21" y="12" width="13" height="4" rx="1.5" fill="#ffb347"/>
+    <path d="M21 23h23M21 29h23M21 35h17M21 41h23M21 47h12" stroke="#b9b9b4" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
   <symbol id="e-work" viewBox="0 0 64 56"><use href="#i-folder"/><path d="M26 28l-5 5 5 5M38 28l5 5-5 5M34 26l-4 14" stroke="rgba(10,60,130,.45)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="e-yt" viewBox="0 0 64 56"><use href="#i-folder"/><path d="M28 26.5v13l11-6.5z" fill="rgba(10,60,130,.45)"/></symbol>
   <symbol id="e-about" viewBox="0 0 64 56"><use href="#i-folder"/><circle cx="32" cy="28" r="2.4" fill="rgba(10,60,130,.45)"/><path d="M32 33v8" stroke="rgba(10,60,130,.45)" stroke-width="3" stroke-linecap="round"/></symbol>
@@ -371,6 +395,7 @@ html:not(.js) .proj[hidden]{display:block!important}
       <button type="button" data-open="youtube">YouTube</button>
       <button type="button" data-open="about">About</button>
       <button type="button" data-open="contact">Contact</button>
+      <a href="/resume.html">Resume</a>
     </span>
   </div>
   <div class="mb-r">
@@ -386,6 +411,7 @@ html:not(.js) .proj[hidden]{display:block!important}
     <button type="button" class="icon" data-open="youtube"><svg aria-hidden="true"><use href="#e-yt"/></svg><span class="lbl">YouTube</span></button>
     <button type="button" class="icon" data-open="about"><svg aria-hidden="true"><use href="#e-about"/></svg><span class="lbl">About</span></button>
     <button type="button" class="icon" data-open="contact"><svg aria-hidden="true"><use href="#e-contact"/></svg><span class="lbl">Contact</span></button>
+    <a class="icon" href="/resume.html" draggable="false"><svg aria-hidden="true"><use href="#i-resume"/></svg><span class="lbl">Resume</span></a>
     <button type="button" class="icon" data-open="readme"><svg aria-hidden="true"><use href="#i-file"/></svg><span class="lbl">README.txt</span></button>
     <button type="button" class="icon" data-open="terminal"><svg aria-hidden="true"><use href="#i-term"/></svg><span class="lbl">Terminal</span></button>
   </div>
@@ -407,6 +433,7 @@ html:not(.js) .proj[hidden]{display:block!important}
       <button type="button" data-open="about"><svg aria-hidden="true"><use href="#i-folder"/></svg>About</button>
       <button type="button" data-open="contact"><svg aria-hidden="true"><use href="#i-folder"/></svg>Contact</button>
       <h4>Projects</h4>
+      <button type="button" data-proj="this-site"><svg aria-hidden="true"><use href="#i-folder"/></svg>carlgao.com</button>
       <button type="button" data-proj="tai"><svg aria-hidden="true"><use href="#i-folder"/></svg>tai</button>
       <button type="button" data-proj="vaultbix"><svg aria-hidden="true"><use href="#i-folder"/></svg>vaultbix</button>
       <button type="button" data-proj="berkeley"><svg aria-hidden="true"><use href="#i-folder"/></svg>berkeley-cs</button>
@@ -418,10 +445,51 @@ html:not(.js) .proj[hidden]{display:block!important}
       </div>
       <div class="pane-body">
         <div class="grid" id="workGrid">
+          <button type="button" class="item" data-proj="this-site"><svg aria-hidden="true"><use href="#i-folder"/></svg>carlgao.com<small>case study</small></button>
           <button type="button" class="item" data-proj="tai"><svg aria-hidden="true"><use href="#i-folder"/></svg>tai<small>building</small></button>
           <button type="button" class="item" data-proj="vaultbix"><svg aria-hidden="true"><use href="#i-folder"/></svg>vaultbix<small>archived</small></button>
           <button type="button" class="item" data-proj="berkeley"><svg aria-hidden="true"><use href="#i-folder"/></svg>berkeley-cs<small>summer 2026</small></button>
         </div>
+
+        <article class="doc proj" data-proj="this-site" hidden>
+          <h2>carlgao.com <small>2026</small></h2>
+          <span class="badge">case study &middot; design + code</span>
+          <p>This site is my resume, so I built it as a desktop people can poke at: folders, a dock, a terminal, and my name in 3D ASCII on the wallpaper. The desktop is one file of plain HTML, CSS, and JavaScript, with no framework and no build step.</p>
+
+          <h3>Type and color</h3>
+          <p>A monospace for anything that should feel like a machine, a clean sans for anything you read. Amber is the accent on a warm near-black, with macOS blue kept for selection and buttons.</p>
+          <div class="spec">
+            <div class="m"><b>Aa</b><span>JetBrains Mono<br>wallpaper, terminal, labels</span></div>
+            <div><b>Aa</b><span>SF on Apple, Inter elsewhere<br>windows and reading</span></div>
+          </div>
+          <div class="swatches">
+            <span><i style="background:#ffb347"></i>#ffb347 accent</span>
+            <span><i style="background:#0a0a09"></i>#0a0a09 desk</span>
+            <span><i style="background:#ece7da"></i>#ece7da text</span>
+            <span><i style="background:#2f7cf6"></i>#2f7cf6 selection</span>
+          </div>
+
+          <h3>The 3D name</h3>
+          <p>The name isn't an image or a font effect. A small canvas draws it once, and every filled pixel becomes 3D points on a front face, a back face, and the extruded sides. About 30 times a second those points are rotated and projected onto a grid of characters, and the point nearest the viewer wins each cell. A light drifts in front of the name and picks each character, from <code>.</code> in shadow to <code>@</code> in full light. Drag the background to spin it.</p>
+
+          <h3>Fixing the Chinese name</h3>
+          <p>At ASCII resolution, 高世钦 in a very heavy font turned into a blob. It was worst on phones, where all three characters were squeezed into about 10 rows of text. Thinner strokes, extra space between characters, shallower 3D depth, and stacking 高 over 世钦 on phones made it readable.</p>
+          <div class="ba">
+            <figure><img src="/case/zh-name-before.webp" width="780" height="688" loading="lazy" decoding="async" alt="Before: 高世钦 on a phone, squeezed into one short row of ASCII characters"><figcaption>before: one row, weight 900</figcaption></figure>
+            <figure><img src="/case/zh-name-after.webp" width="780" height="688" loading="lazy" decoding="async" alt="After: 高 stacked above 世钦 on a phone, each character large and readable"><figcaption>after: 高 over 世钦, weight 500</figcaption></figure>
+          </div>
+
+          <h3>Details</h3>
+          <ul>
+            <li>Windows grow out of the icon you clicked and shrink into the dock.</li>
+            <li>The YouTube player is a still image until you press play, so no player code loads before that.</li>
+            <li>Every folder and project has its own link. <code>carlgao.com/#tai</code> opens straight to tai.</li>
+            <li>With reduced motion turned on, the start screen, window animations, and idle motion are skipped.</li>
+          </ul>
+          <div class="links">
+            <a class="primary" href="https://github.com/carlgaopapi-png/carlgao-com" target="_blank" rel="noopener">View source &#8599;</a>
+          </div>
+        </article>
 
         <article class="doc proj" data-proj="tai" hidden>
           <h2>tai <small>2026</small></h2>
@@ -482,7 +550,7 @@ html:not(.js) .proj[hidden]{display:block!important}
           </div>
         </article>
       </div>
-      <div class="status-bar" id="workStatus">3 items</div>
+      <div class="status-bar" id="workStatus">4 items</div>
     </div>
   </div>
 </section>
@@ -537,7 +605,7 @@ html:not(.js) .proj[hidden]{display:block!important}
   </div>
 </section>
 
-<section class="win" id="win-contact" role="dialog" aria-labelledby="wt-contact" tabindex="-1" data-w="560" data-h="560">
+<section class="win" id="win-contact" role="dialog" aria-labelledby="wt-contact" tabindex="-1" data-w="560" data-h="610">
   <div class="win-bar">
     <div class="lights"><button class="l-close" aria-label="Close">&times;</button><button class="l-min" aria-label="Minimize">&minus;</button><button class="l-max" aria-label="Zoom">+</button></div>
     <div class="win-title" id="wt-contact"><svg aria-hidden="true"><use href="#i-folder"/></svg>Contact</div>
@@ -548,6 +616,7 @@ html:not(.js) .proj[hidden]{display:block!important}
     <p class="sub">Builder and founder. Fastest reply is email.</p>
     <div class="crows">
       <div class="crow"><span class="k">email</span><a href="mailto:iamcarlgao@gmail.com">iamcarlgao@gmail.com</a><button type="button" class="copy" data-copy="iamcarlgao@gmail.com">Copy</button></div>
+      <div class="crow"><span class="k">resume</span><a href="/resume.html">carlgao.com/resume</a><span></span></div>
       <div class="crow"><span class="k">call</span><a href="https://cal.com/carl-gao-czmatk/15min" target="_blank" rel="noopener">Book 15 minutes</a><span></span></div>
       <div class="crow"><span class="k">youtube</span><a href="https://www.youtube.com/@cgaooooo" target="_blank" rel="noopener">@cgaooooo</a><span></span></div>
       <div class="crow"><span class="k">instagram</span><a href="https://www.instagram.com/cgaooooo" target="_blank" rel="noopener">@cgaooooo</a><span></span></div>
@@ -602,15 +671,21 @@ currently building: <span class="amber">tai</span></div>
   function rnd(s){ return s[(Math.random() * s.length) | 0]; }
   function $(id){ return document.getElementById(id); }
   var isPhone = function(){ return window.matchMedia("(max-width:719px)").matches; };
+  /* deep links: #hash -> [window, project]. Shared links skip the start screen and land on the window. */
+  var ROUTES = {
+    work: ["work"], "this-site": ["work", "this-site"], tai: ["work", "tai"], vaultbix: ["work", "vaultbix"], berkeley: ["work", "berkeley"],
+    youtube: ["youtube"], about: ["about"], contact: ["contact"]
+  };
 
-  /* ---------- start screen: arcade title, menu, starfield, mini runner (once per session, ?intro forces it unless reduced motion) ---------- */
+  /* ---------- start screen: arcade title, menu, starfield, mini runner (first visit only; deep links skip it; ?intro forces it unless reduced motion) ---------- */
   (function intro(){
     var boot = document.getElementById("boot");
     var seen = false;
-    try { seen = sessionStorage.getItem("booted") === "1"; } catch(e){}
+    try { seen = sessionStorage.getItem("booted") === "1" || localStorage.getItem("booted") === "1"; } catch(e){}
     var force = /[?&]intro\b/.test(location.search);
-    if (reduce || (seen && !force)) { boot.classList.add("gone"); window.__introDone = true; return; }
-    try { sessionStorage.setItem("booted", "1"); } catch(e){}
+    var deep = ROUTES.hasOwnProperty(location.hash.slice(1));
+    if (reduce || ((seen || deep) && !force)) { boot.classList.add("gone"); window.__introDone = true; return; }
+    try { sessionStorage.setItem("booted", "1"); localStorage.setItem("booted", "1"); } catch(e){}
 
     function $(id){ return document.getElementById(id); }
     var root = document.documentElement;
@@ -636,7 +711,7 @@ currently building: <span class="amber">tai</span></div>
       barEl.textContent = shown < 1
         ? "LOADING [" + "#".repeat(n) + ".".repeat(W - n) + "] " + ("  " + Math.round(shown * 100)).slice(-3) + "%"
         : "SYSTEM READY";
-      if (shown === 1 && !ready) { ready = true; if (pending) start(); }
+      if (shown === 1 && !ready) { ready = true; lastInput = now; if (pending) start(); }   // the auto-start countdown begins once the menu is usable
     }
 
     /* ---- big block logo, drawn from a tiny canvas like the hero ---- */
@@ -728,6 +803,7 @@ currently building: <span class="amber">tai</span></div>
       b.addEventListener("click", function(){ act(b.dataset.act); });
     });
     boot.querySelectorAll(".play-actions button").forEach(function(b){ b.addEventListener("click", function(){ act(b.dataset.act); }); });
+    boot.addEventListener("pointermove", function(){ lastInput = performance.now(); }, { passive: true });   // someone moving the mouse is still deciding
     function act(a){
       var now = performance.now();
       if (now - lastAct < 200) return;                // keyboard Enter can also fire a click; only act once
@@ -823,8 +899,8 @@ currently building: <span class="amber">tai</span></div>
         if (!leaving && !pending) {
           var idle = now - lastInput;
           if (!ready) pressEl.textContent = "PLEASE WAIT";
-          else if (view === "title" && idle > 9000) start();
-          else if (view === "title" && idle > 4000) pressEl.textContent = "PRESS ENTER  (AUTO START " + Math.ceil((9000 - idle) / 1000) + ")";
+          else if (view === "title" && idle > 4500) start();             // short: most visitors came for the site, not the title screen
+          else if (view === "title" && idle > 1500) pressEl.textContent = "PRESS ENTER  (AUTO START " + Math.ceil((4500 - idle) / 1000) + ")";
           else pressEl.textContent = view === "title" ? "PRESS ENTER" : "ENTER TO START / ESC FOR MENU";
         }
       }
@@ -1232,6 +1308,7 @@ currently building: <span class="amber">tai</span></div>
     w.style.zIndex = ++Z;
     Array.prototype.forEach.call(document.querySelectorAll(".win.active"), function(o){ if (o !== w) o.classList.remove("active"); });
     w.classList.add("active");
+    syncHash();
   }
   function topWin(){
     var best = null;
@@ -1269,7 +1346,7 @@ currently building: <span class="amber">tai</span></div>
     var done = function(){
       w.classList.remove("open", "active", "max", "closing");
       if (dockBtns[id]) dockBtns[id].classList.remove("running");
-      var nxt = topWin(); if (nxt) focusWin(nxt);
+      var nxt = topWin(); if (nxt) focusWin(nxt); else syncHash();
       if (openers[id] && document.body.contains(openers[id])) openers[id].focus({ preventScroll: true });
     };
     if (reduce || !w.animate) return done();
@@ -1279,7 +1356,7 @@ currently building: <span class="amber">tai</span></div>
   function minWin(w){
     var id = w.id.slice(4), target = dockBtns[id];
     if (id === "youtube") ytReset();
-    var done = function(){ w.classList.add("min"); w.classList.remove("active"); var nxt = topWin(); if (nxt) focusWin(nxt); };
+    var done = function(){ w.classList.add("min"); w.classList.remove("active"); var nxt = topWin(); if (nxt) focusWin(nxt); else syncHash(); };
     if (reduce || !target || !w.animate || isPhone()) return done();
     var a = center(w), b = center(target);
     w.animate([{ transform: "none", opacity: 1 }, { transform: "translate(" + (b.x - a.x) + "px," + (b.y - a.y) + "px) scale(.08)", opacity: .2 }],
@@ -1359,8 +1436,9 @@ currently building: <span class="amber">tai</span></div>
       if (d && d.on) { ic.dataset.moved = "1"; moved = true; setTimeout(function(){ moved = false; }, 0); }
       ic.classList.remove("dragging"); d = null;
     });
-    ic.addEventListener("click", function(){
-      if (moved) return;                                   // that was a drag, not a click
+    ic.addEventListener("click", function(e){
+      if (moved) { e.preventDefault(); return; }           // that was a drag, not a click (and don't follow a link icon)
+      if (!ic.dataset.open) return;                        // link icons (Resume) just navigate
       if (ic.dataset.open === "work") showProj(null);
       openWin(ic.dataset.open, ic);
     });
@@ -1368,19 +1446,48 @@ currently building: <span class="amber">tai</span></div>
 
   /* ---- Work window: folder grid -> project detail, with back + breadcrumbs ---- */
   var workGrid = $("workGrid"), workBack = $("workBack"), workCrumbs = $("workCrumbs"), workStatus = $("workStatus");
-  var projNames = { tai: "tai", vaultbix: "vaultbix", berkeley: "berkeley-cs" };
+  var projNames = { "this-site": "carlgao.com", tai: "tai", vaultbix: "vaultbix", berkeley: "berkeley-cs" };
   function showProj(key){
     workGrid.hidden = !!key;
     Array.prototype.forEach.call(document.querySelectorAll("article.proj"), function(a){ a.hidden = a.dataset.proj !== key; });
     workBack.disabled = !key;
     workCrumbs.innerHTML = key ? "<span>Work &rsaquo;</span> " + projNames[key] : "Work";
-    workStatus.textContent = key ? projNames[key] : "3 items";
+    workStatus.textContent = key ? projNames[key] : workGrid.children.length + " items";
     Array.prototype.forEach.call(document.querySelectorAll("#win-work .side button"), function(b){
       b.classList.toggle("on", key ? b.dataset.proj === key : b.dataset.open === "work");
     });
     var body = document.querySelector("#win-work .pane-body"); if (body) body.scrollTop = 0;
+    syncHash();
   }
-  Array.prototype.forEach.call(document.querySelectorAll("#win-work [data-proj]"), function(b){
+
+  /* ---- deep links: the URL follows the top window, so the address bar is always a shareable link ---- */
+  function currentRoute(){
+    var best = null;
+    Array.prototype.forEach.call(document.querySelectorAll(".win.open:not(.min):not(.closing)"), function(w){
+      if (ROUTES.hasOwnProperty(w.id.slice(4)) && (!best || +w.style.zIndex > +best.style.zIndex)) best = w;
+    });
+    if (!best) return "";
+    if (best.id !== "win-work") return best.id.slice(4);
+    var a = document.querySelector("article.proj:not([hidden])");
+    return a ? a.dataset.proj : "work";
+  }
+  function syncHash(){
+    if (!window.__introDone || !history.replaceState) return;   // keep an incoming #link until it has been opened
+    var want = currentRoute();
+    if (location.hash.slice(1) === want) return;
+    /* drop ?intro so a copied link never forces the start screen */
+    var q = location.search.replace(/([?&])intro(=[^&]*)?(&|$)/, function(m, a, b, c){ return c ? a : ""; });
+    history.replaceState(null, "", location.pathname + q + (want ? "#" + want : ""));
+  }
+  function openRoute(r){
+    if (!ROUTES.hasOwnProperty(r)) return false;
+    var to = ROUTES[r];
+    if (to[0] === "work") showProj(to[1] || null);
+    openWin(to[0], null);
+    return true;
+  }
+  window.addEventListener("hashchange", function(){ openRoute(location.hash.slice(1)); });
+  Array.prototype.forEach.call(document.querySelectorAll("#win-work button[data-proj]"), function(b){   // buttons only: the articles carry data-proj too, and a click inside one must not reset its scroll
     b.addEventListener("click", function(){ showProj(b.dataset.proj); });
   });
   workBack.addEventListener("click", function(){ showProj(null); });
@@ -1420,16 +1527,18 @@ currently building: <span class="amber">tai</span></div>
   tPrint("Last login: " + new Date().toDateString() + " on ttys000");
   tPrint("type <span class='p'>help</span> to see what I can do.");
   var CMDS = {
-    help: function(){ tPrint("help      this list\nls        what's on the desktop\nopen X    open a folder (work, youtube, about, contact, readme)\nwhoami    who is carl\ncontact   how to reach me\nnpm       vaultbix-cli download count\nclear     clear the screen\nintro     replay the start screen\nexit      close the terminal".replace(/\n/g, "<br>")); },
-    ls: function(){ tPrint("<span class='ok'>Work/</span>  <span class='ok'>YouTube/</span>  <span class='ok'>About/</span>  <span class='ok'>Contact/</span>  README.txt  Terminal.app"); },
+    help: function(){ tPrint("help      this list\nls        what's on the desktop\nopen X    open a folder (work, youtube, about, contact, readme)\nresume    open my resume\nwhoami    who is carl\ncontact   how to reach me\nnpm       vaultbix-cli download count\nclear     clear the screen\nintro     replay the start screen\nexit      close the terminal".replace(/\n/g, "<br>")); },
+    ls: function(){ tPrint("<span class='ok'>Work/</span>  <span class='ok'>YouTube/</span>  <span class='ok'>About/</span>  <span class='ok'>Contact/</span>  Resume  README.txt  Terminal.app"); },
+    resume: function(){ tPrint("opening resume..."); setTimeout(function(){ location.href = "/resume.html"; }, 300); },
     whoami: function(){ tPrint("carl gao (高世钦). builder, founder. currently building tai."); },
     contact: function(){ tPrint("email   iamcarlgao@gmail.com<br>call    cal.com/carl-gao-czmatk/15min"); },
     npm: function(){ tPrint("vaultbix-cli: " + $("npmdl").textContent + " downloads in the last 12 months"); },
     clear: function(){ tOut.innerHTML = ""; },
-    intro: function(){ tPrint("rebooting..."); setTimeout(function(){ location.search = "?intro"; }, 400); },
+    intro: function(){ tPrint("rebooting..."); setTimeout(function(){ location.href = location.pathname + "?intro"; }, 400); },   // no #hash, so this always reloads
     exit: function(){ closeWin(win("terminal")); },
     sudo: function(){ tPrint("nice try.", "err"); }
   };
+  var alias = { "berkeley-cs": "berkeley", "carlgao.com": "this-site", site: "this-site" };
   function run(line){
     var parts = line.trim().split(/\s+/), cmd = (parts[0] || "").toLowerCase(), arg = (parts[1] || "").toLowerCase().replace(/\/$/, "").replace(".txt", "");
     tPrint("<span class='p'>carl@gao ~ %</span> " + esc(line));
@@ -1437,7 +1546,8 @@ currently building: <span class="amber">tai</span></div>
     if (cmd === "open" || cmd === "cd") {
       var ok = { work: 1, youtube: 1, about: 1, contact: 1, readme: 1 };
       if (ok[arg]) { if (arg === "work") showProj(null); openWin(arg, null); tPrint("opening " + arg + "..."); }
-      else if (projNames[arg] || arg === "berkeley-cs") { var k = arg === "berkeley-cs" ? "berkeley" : arg; showProj(k); openWin("work", null); tPrint("opening work/" + projNames[k] + "..."); }
+      else if (arg === "resume") { CMDS.resume(); }
+      else if (projNames.hasOwnProperty(arg) || alias.hasOwnProperty(arg)) { var k = alias[arg] || arg; showProj(k); openWin("work", null); tPrint("opening work/" + projNames[k] + "..."); }
       else tPrint(cmd + ": no such folder: " + esc(arg || "(nothing)"), "err");
       return;
     }
@@ -1451,8 +1561,11 @@ currently building: <span class="amber">tai</span></div>
   });
   $("term").addEventListener("click", function(){ tIn.focus(); });
 
-  /* ---- after the start screen: put README out like a sticky note (desktop only) ---- */
-  function welcome(){ if (!isPhone()) setTimeout(function(){ openWin("readme", null); }, reduce ? 0 : 1500); }
+  /* ---- after the start screen: open the #linked window, or put README out like a sticky note (desktop only) ---- */
+  function welcome(){
+    if (openRoute(location.hash.slice(1))) return;
+    if (!isPhone()) setTimeout(function(){ openWin("readme", null); }, reduce ? 0 : 1500);
+  }
   if (window.__introDone) welcome(); else window.addEventListener("intro:done", welcome);
 
 })();
