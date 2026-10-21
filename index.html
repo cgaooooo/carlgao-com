@@ -239,12 +239,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 @media(min-width:900px){.split{grid-template-columns:1.15fr 1fr;align-items:start}.split .art{margin-top:12px}}
 
 /* youtube player */
-.player{background:#000;aspect-ratio:16/8;display:grid;place-items:center;position:relative;border-bottom:1px solid var(--hair)}
-.player pre{font-family:var(--mono);font-size:12px;line-height:1.2;color:var(--amber);text-shadow:0 0 12px rgba(255,179,71,.4)}
-.player .bar{position:absolute;left:14px;right:14px;bottom:12px;height:4px;border-radius:2px;background:rgba(255,255,255,.18);overflow:hidden}
-.player .bar i{display:block;height:100%;width:30%;background:#ff3b30;animation:prog 12s linear infinite}
-@keyframes prog{from{width:2%}to{width:100%}}
-.player .tc{position:absolute;left:14px;bottom:22px;font:11px var(--mono);color:#ddd}
+.player{background:#000;aspect-ratio:16/9;position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.yt-face{position:absolute;inset:0;display:block;color:inherit}
+.yt-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .25s,transform .5s cubic-bezier(.2,.85,.25,1)}
+.yt-face::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.15),transparent 40%,rgba(0,0,0,.8))}
+.yt-face pre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;padding:10px 16px 10px 20px;border-radius:10px;background:rgba(0,0,0,.55);
+  font-family:var(--mono);font-size:12px;line-height:1.2;color:var(--amber);text-shadow:0 0 12px rgba(255,179,71,.4);transition:color .2s,background .2s}
+.yt-face:hover img,.yt-face:focus-visible img{opacity:.92;transform:scale(1.03)}
+.yt-face:hover pre,.yt-face:focus-visible pre{color:#fff;background:#ff3b30;text-shadow:none}
+.yt-face:focus-visible{outline:2px solid var(--sel);outline-offset:-2px}
+.yt-face .tc,.yt-face .dur{position:absolute;bottom:12px;z-index:1;font:11px var(--mono);color:#e5e5e5}
+.yt-face .tc{left:14px}.yt-face .tc b{color:var(--amber);font-weight:500}
+.yt-face .dur{right:14px;padding:1px 5px;border-radius:4px;background:rgba(0,0,0,.7)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 
 /* contact card */
 .card{padding:26px 26px 30px;text-align:center}
@@ -492,29 +499,33 @@ html:not(.js) .proj[hidden]{display:block!important}
   </div>
 </section>
 
-<section class="win" id="win-youtube" role="dialog" aria-labelledby="wt-youtube" tabindex="-1" data-w="640" data-h="520">
+<section class="win" id="win-youtube" role="dialog" aria-labelledby="wt-youtube" tabindex="-1" data-w="640" data-h="620">
   <div class="win-bar">
     <div class="lights"><button class="l-close" aria-label="Close">&times;</button><button class="l-min" aria-label="Minimize">&minus;</button><button class="l-max" aria-label="Zoom">+</button></div>
     <div class="win-title" id="wt-youtube"><svg aria-hidden="true"><use href="#i-folder"/></svg>YouTube</div>
   </div>
   <div class="win-body">
-    <div class="player" aria-hidden="true">
-<pre>   |\
-   | \
-   |  &gt;
-   | /
-   |/</pre>
-      <span class="tc">00:42 / 12:07</span>
-      <div class="bar"><i></i></div>
+    <div class="player" id="ytPlayer" data-yt="4hG4W5NXZQc" data-title="better late than never">
+      <a class="yt-face" href="https://www.youtube.com/watch?v=4hG4W5NXZQc" target="_blank" rel="noopener" aria-label="Play episode 1, better late than never (30 seconds)">
+        <img src="https://i.ytimg.com/vi/4hG4W5NXZQc/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onerror="this.remove()">
+<pre aria-hidden="true">  |\
+  | \
+  |  &gt;
+  | /
+  |/</pre>
+        <span class="tc" aria-hidden="true"><b>EP 01</b> better late than never</span>
+        <span class="dur" aria-hidden="true">0:30</span>
+      </a>
     </div>
     <div class="doc">
       <h2>My channel</h2>
-      <span class="badge"><i class="live"></i>recording</span>
-      <p>Mostly vlogs: building tai in public, what it's like running a startup, and whatever I'm working on that week.</p>
-      <p class="muted">Shot on a GoPro HERO12 and an iPhone, edited in DaVinci Resolve. Short versions go to Instagram Reels.</p>
+      <span class="badge"><i class="live"></i>ep 01 is out &middot; Oct 20, 2026</span>
+      <p>First video is up: <b>better late than never</b>. Next up: vlogs on building tai in public, what it's like running a startup, and whatever I'm working on that week.</p>
+      <p class="muted">Shot on a GoPro HERO12 and an iPhone, edited in DaVinci Resolve. Same cut is on Instagram as a Reel.</p>
       <div class="links">
-        <a class="primary" href="https://www.youtube.com/@cgaooooo" target="_blank" rel="noopener">Watch on YouTube &#8599;</a>
-        <a href="https://www.instagram.com/cgaooooo" target="_blank" rel="noopener">Instagram Reels &#8599;</a>
+        <a class="primary" href="https://www.youtube.com/watch?v=4hG4W5NXZQc" target="_blank" rel="noopener">Watch on YouTube &#8599;</a>
+        <a href="https://www.instagram.com/reel/DevQDjkxM46/" target="_blank" rel="noopener">Watch the Reel &#8599;</a>
+        <a href="https://www.youtube.com/@cgaooooo?sub_confirmation=1" target="_blank" rel="noopener">Subscribe &#8599;</a>
       </div>
     </div>
   </div>
@@ -529,7 +540,7 @@ html:not(.js) .proj[hidden]{display:block!important}
     <h2>Carl Gao <small lang="zh-Hans">高世钦</small></h2>
     <p>I'm Carl. I like building things and putting them in front of people fast.</p>
     <p>I co-founded VaultBix, shipped a Chrome extension and a CLI to npm, then wound it down. It taught me more than anything that worked would have.</p>
-    <p>Now I'm building tai because I need it myself. I care a lot about frontend taste, and I'm starting a YouTube channel to show the process.</p>
+    <p>Now I'm building tai because I need it myself. I care a lot about frontend taste, and I just started a YouTube channel to show the process.</p>
     <dl class="kv">
       <dt>based in</dt><dd>Massachusetts</dd>
       <dt>building</dt><dd>tai</dd>
@@ -1181,6 +1192,24 @@ currently building: <span class="amber">tai</span></div>
     .then(function(j){ if (j && j.downloads > 0) $("npmdl").textContent = j.downloads.toLocaleString("en-US"); })
     .catch(function(){});
 
+  /* ---- youtube: thumbnail until clicked, then swap in the real player ---- */
+  var yt = $("ytPlayer"), ytFace = yt ? yt.querySelector(".yt-face") : null;
+  function ytReset(){                       // closing or minimizing the window stops playback
+    if (!yt || !ytFace || yt.contains(ytFace)) return;
+    yt.innerHTML = ""; yt.appendChild(ytFace);
+  }
+  if (ytFace) ytFace.addEventListener("click", function(e){
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;   // let cmd-click open YouTube in a new tab
+    e.preventDefault();
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + yt.dataset.yt + "?autoplay=1&rel=0&playsinline=1";
+    f.title = yt.dataset.title;
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    f.referrerPolicy = "strict-origin-when-cross-origin";
+    yt.innerHTML = ""; yt.appendChild(f);
+  });
+
   /* ---- window manager ---- */
   var Z = 100, opened = 0, openers = {};
   var dockBtns = {};
@@ -1240,6 +1269,7 @@ currently building: <span class="amber">tai</span></div>
   function closeWin(w){
     var id = w.id.slice(4);
     if (w.classList.contains("closing")) return;
+    if (id === "youtube") ytReset();
     w.classList.add("closing");
     var done = function(){
       w.classList.remove("open", "active", "max", "closing");
@@ -1253,6 +1283,7 @@ currently building: <span class="amber">tai</span></div>
 
   function minWin(w){
     var id = w.id.slice(4), target = dockBtns[id];
+    if (id === "youtube") ytReset();
     var done = function(){ w.classList.add("min"); w.classList.remove("active"); var nxt = topWin(); if (nxt) focusWin(nxt); };
     if (reduce || !target || !w.animate || isPhone()) return done();
     var a = center(w), b = center(target);
