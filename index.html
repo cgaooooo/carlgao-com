@@ -221,8 +221,6 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .doc p{color:#d4d4da;margin:12px 0;max-width:62ch}
 .doc .muted{color:var(--win-dim)}
 .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--win-dim)}
-.badge i{width:7px;height:7px;border-radius:50%;background:var(--win-dim)}
-.badge i.live{background:#30d158;box-shadow:0 0 8px #30d158}
 .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
 .tags span{font-size:11.5px;padding:3px 9px;border-radius:999px;background:rgba(255,255,255,.07);color:#cfcfd6}
 .links{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
@@ -243,10 +241,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-a
 .yt-face{position:absolute;inset:0;display:block;color:inherit}
 .yt-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .25s,transform .5s cubic-bezier(.2,.85,.25,1)}
 .yt-face::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.15),transparent 40%,rgba(0,0,0,.8))}
-.yt-face pre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:1;padding:10px 16px 10px 20px;border-radius:10px;background:rgba(0,0,0,.55);
-  font-family:var(--mono);font-size:12px;line-height:1.2;color:var(--amber);text-shadow:0 0 12px rgba(255,179,71,.4);transition:color .2s,background .2s}
+.yt-face .play{position:absolute;left:50%;top:50%;z-index:1;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(10,10,9,.5);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:background .2s,border-color .2s,transform .25s cubic-bezier(.2,.85,.25,1)}
+.yt-face .play svg{width:28px;height:28px;margin-left:4px;fill:var(--amber);transition:fill .2s}   /* nudged right: a triangle's visual center sits left of its box */
+@media(max-width:719px){.yt-face .play{width:54px;height:54px;margin:-27px 0 0 -27px}.yt-face .play svg{width:22px;height:22px;margin-left:3px}}
 .yt-face:hover img,.yt-face:focus-visible img{opacity:.92;transform:scale(1.03)}
-.yt-face:hover pre,.yt-face:focus-visible pre{color:#fff;background:#ff3b30;text-shadow:none}
+.yt-face:hover .play,.yt-face:focus-visible .play{background:#ff3b30;border-color:#ff3b30;transform:scale(1.06)}
+.yt-face:hover .play svg,.yt-face:focus-visible .play svg{fill:#fff}
 .yt-face:focus-visible{outline:2px solid var(--sel);outline-offset:-2px}
 .yt-face .tc,.yt-face .dur{position:absolute;bottom:12px;z-index:1;font:11px var(--mono);color:#e5e5e5}
 .yt-face .tc{left:14px}.yt-face .tc b{color:var(--amber);font-weight:500}
@@ -416,37 +418,23 @@ html:not(.js) .proj[hidden]{display:block!important}
       </div>
       <div class="pane-body">
         <div class="grid" id="workGrid">
-          <button type="button" class="item" data-proj="tai"><svg aria-hidden="true"><use href="#i-folder"/></svg>tai<small>in development</small></button>
+          <button type="button" class="item" data-proj="tai"><svg aria-hidden="true"><use href="#i-folder"/></svg>tai<small>building</small></button>
           <button type="button" class="item" data-proj="vaultbix"><svg aria-hidden="true"><use href="#i-folder"/></svg>vaultbix<small>archived</small></button>
           <button type="button" class="item" data-proj="berkeley"><svg aria-hidden="true"><use href="#i-folder"/></svg>berkeley-cs<small>summer 2026</small></button>
         </div>
 
         <article class="doc proj" data-proj="tai" hidden>
-          <div class="split">
-            <div>
-              <h2>tai <small>2026</small></h2>
-              <span class="badge"><i class="live"></i>in development</span>
-              <p>An anti-doomscroll app for people who have a real reason to be on their phone. Before you open a distracting app, tai asks what you're there for. Junk answers don't count.</p>
-              <p class="muted">The goal is a phone that's net positive: blocking, daily goals, and a focus dashboard that feels more like a game HUD than a settings page.</p>
-              <dl class="kv"><dt>role</dt><dd>founder, design + build</dd><dt>status</dt><dd>in development</dd><dt>site</dt><dd>gettai.app (soon)</dd></dl>
-            </div>
-<pre class="art">  open instagram
-        |
-        v
-  +-------------------------+
-  | <b>what are you here for?</b>  |
-  | &gt; post today's reel_    |
-  +-------------------------+
-        |            |
-   [ go, 10m ]   [ close ]</pre>
-          </div>
+          <h2>tai <small>2026</small></h2>
+          <span class="badge">building</span>
+          <p>A consumer app that helps people stop wasting time on their phone.</p>
+          <dl class="kv"><dt>role</dt><dd>founder, design + build</dd><dt>status</dt><dd>building</dd><dt>site</dt><dd>gettai.app (soon)</dd></dl>
         </article>
 
         <article class="doc proj" data-proj="vaultbix" hidden>
           <div class="split">
             <div>
               <h2>VaultBix <small>2026</small></h2>
-              <span class="badge"><i></i>archived</span>
+              <span class="badge">archived</span>
               <p>Co-founded a developer-security startup that stopped API keys, passwords, and secrets from leaking into AI tools.</p>
               <p>Shipped two products: a CLI that wraps Claude Code in a PTY to catch secrets in real time, published on npm, and an open-source Chrome extension with 33 detection patterns that runs 100% locally.</p>
               <p class="muted">What I learned: we built for the browser, but engineers live in the terminal. Pick the surface your users already use.</p>
@@ -477,7 +465,7 @@ html:not(.js) .proj[hidden]{display:block!important}
           <div class="split">
             <div>
               <h2>Berkeley CS Academy <small>summer 2026</small></h2>
-              <span class="badge"><i></i>completed</span>
+              <span class="badge">completed</span>
               <p>UC Berkeley Pre-College Scholars, CS Academy. Seven weeks on campus in summer 2026.</p>
               <p>Worked through Beauty and Joy of Computing in Snap!: higher-order functions, Markov chain text generators, a working 2048 clone, and recursive kaleidoscope drawings.</p>
               <div class="tags"><span>Snap!</span><span>BJC</span><span>recursion</span><span>higher-order functions</span></div>
@@ -508,18 +496,14 @@ html:not(.js) .proj[hidden]{display:block!important}
     <div class="player" id="ytPlayer" data-yt="4hG4W5NXZQc" data-title="better late than never">
       <a class="yt-face" href="https://www.youtube.com/watch?v=4hG4W5NXZQc" target="_blank" rel="noopener" aria-label="Play episode 1, better late than never (30 seconds)">
         <img src="https://i.ytimg.com/vi/4hG4W5NXZQc/maxresdefault.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" onerror="this.remove()">
-<pre aria-hidden="true">  |\
-  | \
-  |  &gt;
-  | /
-  |/</pre>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5a.8.8 0 0 0-1.2.7z"/></svg></span>
         <span class="tc" aria-hidden="true"><b>EP 01</b> better late than never</span>
         <span class="dur" aria-hidden="true">0:30</span>
       </a>
     </div>
     <div class="doc">
       <h2>My channel</h2>
-      <span class="badge"><i class="live"></i>ep 01 is out &middot; Oct 20, 2026</span>
+      <span class="badge">ep 01 is out &middot; Oct 20, 2026</span>
       <p>First video is up: <b>better late than never</b>. Next up: vlogs on building tai in public, what it's like running a startup, and whatever I'm working on that week.</p>
       <p class="muted">Shot on a GoPro HERO12 and an iPhone, edited in DaVinci Resolve. Same cut is on Instagram as a Reel.</p>
       <div class="links">
@@ -531,7 +515,7 @@ html:not(.js) .proj[hidden]{display:block!important}
   </div>
 </section>
 
-<section class="win" id="win-about" role="dialog" aria-labelledby="wt-about" tabindex="-1" data-w="600" data-h="500">
+<section class="win" id="win-about" role="dialog" aria-labelledby="wt-about" tabindex="-1" data-w="600" data-h="620">
   <div class="win-bar">
     <div class="lights"><button class="l-close" aria-label="Close">&times;</button><button class="l-min" aria-label="Minimize">&minus;</button><button class="l-max" aria-label="Zoom">+</button></div>
     <div class="win-title" id="wt-about"><svg aria-hidden="true"><use href="#i-folder"/></svg>About</div>
@@ -541,11 +525,14 @@ html:not(.js) .proj[hidden]{display:block!important}
     <p>I'm Carl. I like building things and putting them in front of people fast.</p>
     <p>I co-founded VaultBix, shipped a Chrome extension and a CLI to npm, then wound it down. It taught me more than anything that worked would have.</p>
     <p>Now I'm building tai because I need it myself. I care a lot about frontend taste, and I just started a YouTube channel to show the process.</p>
+    <p>Before any of that, it was hockey. I played for the Hong Kong national ice hockey team and at a hockey academy.</p>
+    <p>I also make art. I've won art awards, including a Scholastic award, and took 2nd in the state for a fish award. I'm into design, augmented reality, and TouchDesigner.</p>
+    <p>Next I want to make content: vlogs on building tai in public, startup life, hockey, and design.</p>
     <dl class="kv">
       <dt>based in</dt><dd>Massachusetts</dd>
       <dt>building</dt><dd>tai</dd>
       <dt>stack</dt><dd>TypeScript, React, Next.js, Python</dd>
-      <dt>off-screen</dt><dd>hockey, vlogs</dd>
+      <dt>off-screen</dt><dd>hockey, art, design, vlogs</dd>
     </dl>
   </div>
 </section>
