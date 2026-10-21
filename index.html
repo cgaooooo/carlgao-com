@@ -55,7 +55,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@900&text=%E9%AB%98%E4%B8%96%E9%92%A6&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;700;900&text=%E9%AB%98%E4%B8%96%E9%92%A6&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0a0a09;
@@ -927,8 +927,8 @@ currently building: <span class="amber">tai</span></div>
   var wall = $("wall"), preBg = $("bg"), preMid = $("mid"), preFg = $("fg");
   var CJK = "'Noto Sans SC', 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans CJK SC', 'Microsoft YaHei', sans-serif";
   var NAMES = [
-    { wide: ["CARL GAO"], narrow: ["CARL", "GAO"], font: "800 100px 'JetBrains Mono', monospace" },
-    { wide: ["高世钦"], narrow: ["高世钦"], font: "900 100px " + CJK }
+    { wide: ["CARL GAO"], narrow: ["CARL", "GAO"], font: "700 100px 'JetBrains Mono', monospace", track: 0.1, fill: 0.62 },
+    { wide: ["高世钦"], narrow: ["高", "世钦"], font: "700 100px " + CJK, fontNarrow: "500 100px " + CJK, track: 0.12, fill: 0.62 }
   ];
   var FRONT = ".:-=+*#%@";        // lit faces
   var SIDE = ".,:;-=+*#";          // extruded sides, drawn in a dimmer layer
@@ -964,26 +964,33 @@ currently building: <span class="amber">tai</span></div>
   function buildShape(nm){
     var narrow = isPhone();
     var lines = narrow ? nm.narrow : nm.wide;
-    var worldW = cols * (narrow ? 0.86 : 0.58);              // width in character columns
+    var worldW = cols * (narrow ? 0.86 : nm.fill);              // width in character columns
     var MW = Math.max(60, Math.min(460, Math.round(worldW * 2)));
     var px = worldW / MW;                                    // world units per bitmap pixel
     var c = document.createElement("canvas"), x = c.getContext("2d", { willReadFrequently: true });
-    x.font = nm.font;
+    var font = narrow && nm.fontNarrow ? nm.fontNarrow : nm.font;   // phones have fewer cells per glyph, so thinner strokes
+    x.font = font;
+    /* draw glyph by glyph with extra tracking: at ASCII resolution the gaps between glyphs are what keep them readable */
+    function span(l, trk){ var w = 0; for (var q = 0; q < l.length; q++) w += x.measureText(l[q]).width; return w + trk * (l.length - 1); }
     var maxW = 0;
-    lines.forEach(function(l){ maxW = Math.max(maxW, x.measureText(l).width); });
+    lines.forEach(function(l){ maxW = Math.max(maxW, span(l, nm.track * 100)); });
     var fs = 100 * MW * 0.98 / maxW, lineH = fs * 0.95;
-    var maxH = rows * ar * (narrow ? 0.34 : 0.46) / px;      // keep it clear of the icons / dock
+    var maxH = rows * ar * (narrow ? 0.4 : 0.46) / px;      // keep it clear of the icons / dock
     if (lines.length * lineH > maxH) { fs *= maxH / (lines.length * lineH); lineH = fs * 0.95; }
     var MH = Math.ceil(lines.length * lineH + fs * 0.25);
     c.width = MW; c.height = MH;
-    x.font = nm.font.replace("100px", fs + "px");
-    x.textAlign = "center"; x.textBaseline = "middle"; x.fillStyle = "#fff";
-    lines.forEach(function(l, i){ x.fillText(l, MW / 2, MH / 2 + (i - (lines.length - 1) / 2) * lineH); });
+    x.font = font.replace("100px", fs + "px");
+    x.textAlign = "left"; x.textBaseline = "middle"; x.fillStyle = "#fff";
+    var trk = nm.track * fs;
+    lines.forEach(function(l, i){
+      var gx = MW / 2 - span(l, trk) / 2, gy = MH / 2 + (i - (lines.length - 1) / 2) * lineH;
+      for (var q = 0; q < l.length; q++) { x.fillText(l[q], gx, gy); gx += x.measureText(l[q]).width + trk; }
+    });
     var d = x.getImageData(0, 0, MW, MH).data, A = new Float32Array(MW * MH);
     for (var k = 0; k < A.length; k++) A[k] = d[k * 4 + 3] / 255;
     function a(i, j){ return (i < 0 || j < 0 || i >= MW || j >= MH) ? 0 : A[j * MW + i]; }
 
-    var D = Math.max(3, worldW * 0.1);                      // extrusion depth
+    var D = Math.max(3, worldW * 0.065);                      // extrusion depth
     var steps = Math.max(3, Math.round(D / (px * 0.9)));
     var out = [];
     function push(X, Y, Z, nx, ny, nz, kind){
@@ -1057,7 +1064,7 @@ currently building: <span class="amber">tai</span></div>
     var P = shape.p, n = P.length;
     var cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
     var Dcam = shape.w * 1.6;
-    var CX = cols * (isPhone() ? 0.5 : 0.45), CY = rows * (isPhone() ? 0.3 : 0.4);
+    var CX = cols * (isPhone() ? 0.5 : 0.45), CY = rows * (isPhone() ? 0.3 : 0.37);
     /* a point light that drifts left and right in front of the name, so faces get a gradient */
     var LPx = Math.sin(t * 0.5) * shape.w * 0.55, LPy = -shape.w * 0.22, LPz = -shape.w * 0.45;
     var sc = scatter * scatter * shape.w * 0.7, scattering = scatter > 0.02;
@@ -1095,7 +1102,7 @@ currently building: <span class="amber">tai</span></div>
   function frame(now){
     var t = reduce ? 3 : now / 1000;
     /* motion: idle sway + tilt toward the cursor, or free spin with inertia after a drag */
-    var tYaw = (reduce ? 0 : Math.sin(t * 0.42) * 0.42) + (ptr.active ? (ptr.nx - 0.5) * 0.5 : 0);
+    var tYaw = (reduce ? 0 : Math.sin(t * 0.42) * 0.3) + (ptr.active ? (ptr.nx - 0.5) * 0.5 : 0);
     var tPitch = (reduce ? 0 : Math.sin(t * 0.3) * 0.1) + (ptr.active ? (ptr.ny - 0.5) * 0.3 : 0);
     if (!spin) {
       yaw += vyaw; pitch += vpitch; vyaw *= 0.95; vpitch *= 0.9;
@@ -1169,8 +1176,9 @@ currently building: <span class="amber">tai</span></div>
   }
   var fl = [];
   if (document.fonts && document.fonts.load) {
-    fl.push(document.fonts.load("800 40px 'JetBrains Mono'"));
-    fl.push(document.fonts.load("900 40px " + CJK, "高世钦"));
+    fl.push(document.fonts.load("700 40px 'JetBrains Mono'"));
+    fl.push(document.fonts.load("700 40px " + CJK, "高世钦"));
+    fl.push(document.fonts.load("500 40px " + CJK, "高世钦"));
   }
   Promise.race([Promise.all(fl), new Promise(function(r){ setTimeout(r, 2500); })]).then(bootWall, bootWall);
 
