@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Resume | Carl Gao (高世钦)</title>
-<meta name="description" content="Resume of Carl Gao (高世钦): builder and founder working across frontend, design, and video.">
+<meta name="description" content="Resume of Carl Gao (高世钦): builder and founder working across frontend and design.">
 <meta name="theme-color" content="#0a0a09">
 <link rel="canonical" href="https://carlgao.com/resume.html">
 <!-- Privacy-friendly analytics by Plausible -->
@@ -16,11 +16,11 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a09'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23ffb347' text-anchor='middle'%3Ecg%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&text=%E9%AB%98%E4%B8%96%E9%92%A6&display=swap" rel="stylesheet">
 <style>
-/* Same system as the desktop: JetBrains Mono for labels and dates, Inter for reading (fixed here, not the
-   system font, so the printed PDF looks the same on every machine). Spacing steps: 4 / 8 / 12 / 16 / 24 / 32 / 48. */
+/* Same system as the desktop: JetBrains Mono for labels and dates, Newsreader for reading (a web font, not a
+   system one, so the printed PDF looks the same on every machine). Spacing steps: 4 / 8 / 12 / 16 / 24 / 32 / 48. */
 :root{
   --desk:#0a0a09;
   --paper:#fbfaf7;
@@ -30,12 +30,12 @@
   --label:#8a5100;           /* the site's amber, darkened to 6:1 on paper */
   --amber:#ffb347;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
   --cjk:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Noto Sans CJK SC','Microsoft YaHei',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--desk);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
-body{background:var(--desk);color:var(--ink);font:400 13.5px/1.5 var(--sans);padding:0 16px 48px}
+body{background:var(--desk);color:var(--ink);font:400 15px/1.45 var(--serif);padding:0 16px 48px}
 a{color:inherit;text-decoration:none}
 [lang="zh-Hans"]{font-family:var(--cjk)}
 
@@ -49,7 +49,7 @@ a{color:inherit;text-decoration:none}
 .sheet{max-width:816px;margin:0 auto;background:var(--paper);border-radius:4px;padding:48px 56px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
 
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
-h1{font-size:30px;line-height:1.1;font-weight:700;letter-spacing:-.02em}
+h1{font-size:36px;line-height:1.05;font-weight:500;letter-spacing:-.02em}
 h1 [lang]{font-size:20px;font-weight:500;color:var(--muted);margin-left:8px;letter-spacing:0}
 .role{margin-top:8px;color:var(--muted)}
 .contact{list-style:none;text-align:right;font:11.5px/24px var(--mono);color:var(--muted)}   /* 24px rows: each link is a comfortable tap target */
@@ -61,7 +61,7 @@ section:last-child{border-bottom:0;padding-bottom:0}
 h2{font:500 10.5px/1.9 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--label)}
 .entry + .entry{margin-top:12px}
 .entry header{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
-h3{font-size:14px;font-weight:600}
+h3{font-size:15.5px;font-weight:600}
 .what{color:var(--muted)}
 time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowrap}
 .entry ul{margin:4px 0 0 16px}
@@ -83,7 +83,7 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
 @page{size:letter;margin:.5in .55in}
 @media print{
   html,body{background:#fff}
-  body{padding:0;font-size:12.5px}
+  body{padding:0;font-size:13.5px}
   .bar{display:none}
   section{padding:12px 0}
   .entry + .entry{margin-top:8px}
@@ -103,7 +103,7 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
   <header class="head">
     <div>
       <h1>Carl Gao <span lang="zh-Hans">高世钦</span></h1>
-      <p class="role">Builder and founder. Frontend, design, and video.</p>
+      <p class="role">Builder and founder. Frontend and design.</p>
     </div>
     <ul class="contact">
       <li><a href="mailto:iamcarlgao@gmail.com">iamcarlgao@gmail.com</a></li>
@@ -118,13 +118,6 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
     <h2>Projects</h2>
     <div>
       <div class="entry">
-        <header><h3>carlgao.com</h3><span class="what">design + code</span><time>2026</time></header>
-        <ul>
-          <li>Personal site built as an interactive desktop: windows, a dock, a terminal, and a real-time 3D ASCII rendering of my name.</li>
-          <li>Plain HTML, CSS, and JavaScript with no framework or build step. Every folder and project has a shareable link, and it respects reduced motion.</li>
-        </ul>
-      </div>
-      <div class="entry">
         <header><h3>tai</h3><span class="what">founder, design + build</span><time>2026, building</time></header>
         <ul>
           <li>A consumer app that helps people stop wasting time on their phone.</li>
@@ -136,13 +129,13 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
           <li>Developer-security startup that kept API keys and passwords out of AI tools.</li>
           <li>Shipped a CLI on npm that wraps Claude Code to catch secrets in real time, and an open-source Chrome extension with 33 detection patterns that runs 100% locally.</li>
           <li>Cold-emailed engineers and founders; a YC founder's feedback moved us to a CLI.</li>
-          <li>Built with Next.js, Tailwind, shadcn/ui, Node, Chrome MV3, and Vercel.</li>
         </ul>
       </div>
       <div class="entry">
-        <header><h3>YouTube</h3><span class="what">creator</span><time>2026</time></header>
+        <header><h3>carlgao.com</h3><span class="what">design + code</span><time>2026</time></header>
         <ul>
-          <li>Started a channel. First episode out October 2026, shot on GoPro and iPhone, edited in DaVinci Resolve. Next up: vlogs on building tai in public.</li>
+          <li>Personal site built as an interactive desktop: windows, a taskbar, a terminal, and a real-time 3D ASCII rendering of my name.</li>
+          <li>Plain HTML, CSS, and JavaScript with no framework or build step. Every folder and project has a shareable link, and it respects reduced motion.</li>
         </ul>
       </div>
     </div>
@@ -157,7 +150,7 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
       <div class="entry">
         <header><h3>UC Berkeley Pre-College Scholars, CS Academy</h3><time>summer 2026</time></header>
         <ul>
-          <li>Seven weeks on campus. Beauty and Joy of Computing in Snap!: higher-order functions, Markov chain text generators, a 2048 clone, and recursive drawings.</li>
+          <li>Seven weeks on campus. Beauty and Joy of Computing: higher-order functions, recursion, a Markov chain text generator, and a 2048 clone.</li>
         </ul>
       </div>
     </div>
@@ -195,8 +188,8 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
     <h2>Skills</h2>
     <dl class="kv">
       <dt>code</dt><dd>TypeScript, React, Next.js, Tailwind, Node, Python, HTML, CSS, Canvas</dd>
-      <dt>video</dt><dd>DaVinci Resolve, GoPro, iPhone</dd>
-      <dt>into</dt><dd>Design, augmented reality, TouchDesigner, art, hockey</dd>
+      <dt>tools</dt><dd>DaVinci Resolve, TouchDesigner</dd>
+      <dt>into</dt><dd>Design, augmented reality, art, hockey</dd>
     </dl>
   </section>
 </main>
