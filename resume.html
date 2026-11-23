@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Resume | Carl Gao (高世钦)</title>
 <meta name="description" content="Resume of Carl Gao (高世钦): builder and founder working across frontend and design.">
-<meta name="theme-color" content="#0a0a09">
+<meta name="theme-color" content="#dcd9d2">
 <link rel="canonical" href="https://carlgao.com/resume.html">
 <!-- Privacy-friendly analytics by Plausible -->
 <script async src="https://plausible.io/js/pa-xkqabRID9ToTgE5XRVZLa.js"></script>
@@ -13,7 +13,7 @@
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
   plausible.init()
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a09'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' font-weight='700' fill='%23ffb347' text-anchor='middle'%3Ecg%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='3' width='30' height='26' rx='6' fill='%23efece4' stroke='%23b6b2a7'/%3E%3Crect x='5' y='7' width='16' height='9' rx='1.5' fill='%237c8374'/%3E%3Crect x='5' y='19' width='4' height='4' rx='1' fill='%232a2823'/%3E%3Crect x='11' y='19' width='4' height='4' rx='1' fill='%232a2823'/%3E%3Ccircle cx='24' cy='21' r='4' fill='%23ff5a1f'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
@@ -22,13 +22,13 @@
 /* Same system as the desktop: JetBrains Mono for labels and dates, Newsreader for reading (a web font, not a
    system one, so the printed PDF looks the same on every machine). Spacing steps: 4 / 8 / 12 / 16 / 24 / 32 / 48. */
 :root{
-  --desk:#0a0a09;
+  --desk:#dcd9d2;
   --paper:#fbfaf7;
   --ink:#1b1a17;
   --muted:#66625b;
   --rule:#e4e0d6;
-  --label:#8a5100;           /* the site's amber, darkened to 6:1 on paper */
-  --amber:#ffb347;
+  --label:#a5330a;           /* the site's orange, darkened to 6:1 on paper */
+  --amber:#ff5a1f;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   --serif:'Newsreader',Georgia,'Times New Roman',serif;
   --cjk:'Noto Sans SC','PingFang SC','Hiragino Sans GB','Noto Sans CJK SC','Microsoft YaHei',sans-serif;
@@ -40,13 +40,13 @@ a{color:inherit;text-decoration:none}
 [lang="zh-Hans"]{font-family:var(--cjk)}
 
 /* toolbar above the sheet (screen only) */
-.bar{max-width:816px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;font:12px var(--mono);color:#a39d90}
-.bar a:hover,.bar a:focus-visible{color:var(--amber);outline:none}
-.save{font:inherit;color:var(--desk);background:var(--amber);border:0;border-radius:6px;padding:6px 12px;cursor:pointer}
-.save:hover,.save:focus-visible{background:#ffc46e;outline:2px solid #fff3dd;outline-offset:2px}
+.bar{max-width:816px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;font:12px var(--mono);color:#5d5a52}
+.bar a:hover,.bar a:focus-visible{color:var(--label);outline:none}
+.save{font:inherit;color:var(--ink);background:var(--amber);border:0;border-radius:6px;padding:6px 12px;cursor:pointer}
+.save:hover,.save:focus-visible{background:#ff7a45;outline:2px solid var(--ink);outline-offset:2px}
 
 /* the sheet: US letter proportions on screen, the whole page in print */
-.sheet{max-width:816px;margin:0 auto;background:var(--paper);border-radius:4px;padding:48px 56px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8)}
+.sheet{max-width:816px;margin:0 auto;background:var(--paper);border-radius:4px;padding:48px 56px;box-shadow:0 1px 2px rgba(40,30,14,.25),0 24px 60px -20px rgba(40,30,14,.45)}
 
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding-bottom:16px;border-bottom:2px solid var(--ink)}
 h1{font-size:36px;line-height:1.05;font-weight:500;letter-spacing:-.02em}
@@ -134,8 +134,8 @@ time{margin-left:auto;font:11px var(--mono);color:var(--muted);white-space:nowra
       <div class="entry">
         <header><h3>carlgao.com</h3><span class="what">design + code</span><time>2026</time></header>
         <ul>
-          <li>Personal site built as an interactive desktop: windows, a dock, a terminal, and a real-time 3D ASCII rendering of my name.</li>
-          <li>Plain HTML, CSS, and JavaScript with no framework or build step. Every folder and project has a shareable link, and it respects reduced motion.</li>
+          <li>Personal site built as an imaginary pocket device: a dot-matrix screen, a knob with detents, a receipt printer, and a tape deck that plays music generated in code.</li>
+          <li>Plain HTML, CSS, and JavaScript with no framework or build step. It works on a phone and respects reduced motion.</li>
         </ul>
       </div>
     </div>
