@@ -261,22 +261,12 @@ button:focus-visible,.knob:focus-visible,a:focus-visible{outline:2px solid var(-
 .facts nav a:hover,.facts nav button:hover{color:var(--or-d);border-color:var(--or)}
 .facts nav button{color:var(--or-d)}
 .facts p{color:var(--mute);max-width:280px;text-align:right;padding-bottom:6px}
-/* skin switcher: each button is a tiny drawing of the device in that skin */
-.skins{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:20px}
-.skl{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--skin-txt,#5c584f)}
-.skins button{display:flex;align-items:center;gap:8px;padding:4px 10px 4px 4px;border-radius:9px;font:600 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--skin-txt,#5c584f);transition:color .15s,box-shadow .15s}
+/* skin switcher: just the names, in the same type as the links above; the current skin is the underlined one */
+.skins{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;margin-top:12px}
+.skl,.skins button{font:600 11px/1.5 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--skin-txt,#5c584f)}
+.skins button{padding:6px 0;border-bottom:1px solid transparent;transition:color .15s,border-color .15s}
 .skins button:hover{color:var(--ink)}
-.skins button[aria-pressed="true"]{color:var(--ink);box-shadow:0 0 0 1.5px var(--ink)}
-.chip{position:relative;flex:none;width:34px;height:24px;border-radius:6px;overflow:hidden}
-.chip::before{content:"";position:absolute;left:4px;top:4px;width:18px;height:9px;border-radius:1.5px}
-.chip::after{content:"";position:absolute;right:4px;bottom:4px;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffb08a,#ff5a1f 60%)}
-.chip.c-bone{background:linear-gradient(140deg,#f7f5ee,#e2ded4);box-shadow:inset 0 0 0 1px rgba(60,52,36,.28),inset 1px 1px 0 #fff}
-.chip.c-bone::before{background:#7c8374;box-shadow:inset 0 0 0 1px #2a2b28}
-.chip.c-clear{background:radial-gradient(circle at 70% 70%,rgba(255,255,255,.5) 0 3px,transparent 3.5px),linear-gradient(90deg,transparent 0 13px,#c9a34a 13px 14px,transparent 14px 20px,#c9a34a 20px 21px,transparent 21px) 0 16px/100% 4px no-repeat,linear-gradient(150deg,rgba(255,255,255,.75),rgba(196,226,240,.35) 45%,rgba(120,160,180,.3)),#1d4b4a;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.85),inset 0 0 0 2.5px rgba(150,200,220,.5),0 0 0 1px rgba(40,60,70,.25)}
-.chip.c-clear::before{background:#7c8374;box-shadow:inset 0 0 0 1px #2a2b28}
-.chip.c-graphite{background:linear-gradient(140deg,#3b3b39,#1d1d1c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.6),inset 1px 1px 0 rgba(255,255,255,.18)}
-.chip.c-graphite::before{background:radial-gradient(circle at 30% 50%,rgba(255,170,60,.55),rgba(255,170,60,0) 70%),#140c05;box-shadow:inset 0 0 0 1px #000}
+.skins button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
 
 /* ---------- skin: Graphite. Bead-blasted dark anodised case, light keycaps, an amber backlit LCD, a dark studio ---------- */
 html[data-skin="graphite"]{--bg:#1c1b19;--ink:#ece8de;--legend:#9d998f;--mute:#8f8b81;--or-d:#ff7a45;--skin-txt:#a9a59a}
@@ -366,7 +356,7 @@ html[data-skin="graphite"] .facts nav a:hover,html[data-skin="graphite"] .facts 
   .facts{margin-top:32px}
   .facts p{text-align:left;max-width:none;padding:0}
 }
-@media (max-width:680px){:root{--s:.54}.skl{display:none}.skins{gap:8px}}
+@media (max-width:680px){:root{--s:.54}}
 .no-js .slips{position:static;width:auto;height:auto;margin-top:32px;display:grid;gap:24px;justify-content:center}
 .no-js .slip,.no-js .slip[hidden]{display:block;position:static;width:min(344px,100%);transform:none}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
@@ -676,7 +666,7 @@ html[data-skin="clear"] .g-glare{transform:translate(calc(var(--gx,0) * 2px),cal
 
   <div class="facts">
     <div>
-      <h1>Carl Gao (高世钦) is building tai</h1>
+      <h1>Carl is building tai</h1>
       <nav aria-label="Sections">
         <a href="#slip-1" data-print="1">Work</a>
         <a href="#slip-2" data-print="2">About</a>
@@ -685,9 +675,9 @@ html[data-skin="clear"] .g-glare{transform:translate(calc(var(--gx,0) * 2px),cal
         <button type="button" id="playTxt">Play demo tape</button>
       </nav>
       <div class="skins" role="group" aria-label="Device skin"><span class="skl">Skin</span>
-        <button type="button" data-skin="bone" aria-pressed="true"><i class="chip c-bone" aria-hidden="true"></i>Bone</button>
-        <button type="button" data-skin="clear" aria-pressed="false"><i class="chip c-clear" aria-hidden="true"></i>Clear</button>
-        <button type="button" data-skin="graphite" aria-pressed="false"><i class="chip c-graphite" aria-hidden="true"></i>Graphite</button>
+        <button type="button" data-skin="bone" aria-pressed="true">Bone</button>
+        <button type="button" data-skin="clear" aria-pressed="false">Clear</button>
+        <button type="button" data-skin="graphite" aria-pressed="false">Graphite</button>
       </div>
     </div>
     <p id="tip">Slide the switch to power on</p>
@@ -1327,6 +1317,9 @@ doc.addEventListener('visibilitychange', function () { if (doc.hidden) setTimeou
 /* ---------- skins ---------- */
 var skinBtns = [].slice.call(doc.querySelectorAll('.skins button')), themeMeta = $('meta[name="theme-color"]'), lcdLegend = $('#lcdLegend');
 function skinNow() { return root.getAttribute('data-skin') || 'bone'; }
+/* the most recently clicked skin. Transitions apply their change a frame or more later and can finish out of order,
+   so each one applies this value rather than the skin it was started with */
+var targetSkin = skinNow();
 function applySkin(k) {
   if (k === 'bone') root.removeAttribute('data-skin'); else root.setAttribute('data-skin', k);
   lcdAmber = k === 'graphite';
@@ -1335,13 +1328,14 @@ function applySkin(k) {
   skinBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-skin') === k ? 'true' : 'false'); });
 }
 function chooseSkin(k, from) {
-  if (k === skinNow()) return;
+  if (k === targetSkin) return;
+  targetSkin = k;
   try { localStorage.setItem('tai01-skin', k); } catch (e) { /* storage blocked: the choice lasts until reload */ }
   say(k.charAt(0).toUpperCase() + k.slice(1) + ' skin');
   if (RM || !doc.startViewTransition || !from) { applySkin(k); return; }
   var r = from.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
   var far = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
-  doc.startViewTransition(function () { applySkin(k); }).ready.then(function () {
+  doc.startViewTransition(function () { applySkin(targetSkin); }).ready.then(function () {
     root.animate({ clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + far + 'px at ' + x + 'px ' + y + 'px)'] },
       { duration: 720, easing: 'cubic-bezier(.2,.75,.2,1)', pseudoElement: '::view-transition-new(root)' });
   }, function () { /* a quicker second click replaced this transition, and that one applies its own skin */ });
